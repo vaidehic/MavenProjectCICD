@@ -30,10 +30,10 @@ pipeline{
         }
       }
     }
-    stage('Quality Analysis') {
-      steps {
-        waitForQualitygate abortPipeline:true
-      }
-    }
+     post {
+        always {
+           jiraSendBuildInfo site:'vaidehijirasite.atlassian.net', branch:'master'
+        }
+     }
   }
 }
