@@ -24,7 +24,7 @@ pipeline{
       
      post {
         always {
-           jiraSendBuildInfo site: 'vaidehijirasite.atlassian.net' branch:'MPC-1-develop'
+           jiraSendBuildInfo site: 'vaidehijirasite.atlassian.net', branch:'MPC-1-develop'
         }
      }
   }
