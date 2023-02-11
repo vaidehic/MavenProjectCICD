@@ -31,6 +31,11 @@ pipeline {
         bat 'mvn test'
       }
     }
+            stage('Publishing Junit report') {
+                steps {
+                    junit 'target/surefire-reports/**/*.xml'
+                }
+            }
     stage('Sonar Analaysis') {
       steps {
         echo "Performing Sonar Analysis"
