@@ -10,11 +10,7 @@ pipeline {
              steps {
                  echo 'Building...'
              }
-           stage('compile') {
-      steps {
-             echo "Compiling"
-                bat 'mvn compile'
-      }
+          
              post {
                  always {
                      jiraSendBuildInfo site:'vaidehijirasite.atlassian.net', branch:'master'
@@ -23,7 +19,26 @@ pipeline {
              }
          
            }
+             stage('compile') {
+      steps {
+             echo "Compiling"
+                bat 'mvn compile'
+      }
         }
+            stage('test') {
+      steps {
+        echo "test"
+        bat 'mvn test'
+      }
+    }
+    stage('Sonar Analaysis') {
+      steps {
+        echo "Performing Sonar Analysis"
+        withSonarQubeEnv('SonarQubeServer'){
+        bat 'mvn sonar:sonar'
+        }
+      }
+    }
 
     }   
 }
