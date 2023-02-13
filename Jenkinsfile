@@ -6,25 +6,6 @@ pipeline {
         jdk "JDK-11"
     }  
         stages {
-         stage('Build') {
-             steps {
-                 echo 'Building...'
-             }
-          
-             post {
-                 always {
-                     jiraSendBuildInfo site:'vaidehijirasite.atlassian.net', branch:'master'
-                    
-                 }
-             }
-         
-           }
-             stage('compile') {
-      steps {
-             echo "Compiling"
-                bat 'mvn compile'
-      }
-        }
             stage('test') {
       steps {
         echo "test"
