@@ -48,7 +48,7 @@ pipeline {
             stage('Upload Artifact') {
                  steps {
                   script{
-                      def server = Artifactory.server 'JfrogServer'
+                      def server = Artifactory.server 'artifactory'
                       def uploadSpec = """{ 
                           "files":[
                               {
