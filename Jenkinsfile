@@ -40,10 +40,15 @@ pipeline {
       steps {
         echo "Performing Sonar Analysis"
         withSonarQubeEnv('SonarQubeServer'){
-        bat 'mvn sonar:sonar'
+        bat  ' mvn -Dsonar.coverage.jacoco.xmlReportPaths=
+      .../target/site/jacoco-aggregate/jacoco.xml
+    sonar:sonar -Pcoverage'
+           
+            
         }
       }
     }
+           
             
             stage('Upload Artifact') {
                  steps {
