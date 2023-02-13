@@ -46,17 +46,22 @@ pipeline {
     }
             
             stage('Upload Artifact') {
-                steps {
-                    script {
-                        def server = Artifactory.server'artifactory'
-                        def uploadSpec = ""{"files": [ { "pattern":"target/*.jar", "target" :"multibranchCiCdvaidehi/"
-                                                       }
-                                                      ]
-                                           }"""
-                                           server.upload(uploadSpec)
-                                           }
-                                           }
-                                           }
+                 steps {
+                  script{
+                      def server = Artifactory.server 'JfrogServer'
+                      def uploadSpec = """{ 
+                          "files":[
+                              {
+                                  "pattern":"target./*.jar",
+                                  "target": "multibranchCiCdvaidehi/"
+                              }
+                              ]
+                              }"""
+                              server.upload(uploadSpec)
+                              }
+                              }
+                              }
+            }
                                            
                     
 
