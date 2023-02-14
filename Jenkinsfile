@@ -36,16 +36,7 @@ pipeline {
                     junit 'target/surefire-reports/**/*.xml'
                 }
             }
-    stage('Sonar Analaysis') {
-      steps {
-        echo "Performing Sonar Analysis"
-        withSonarQubeEnv('SonarQubeServer'){
-        bat  'mvn sonar:sonar'
-           
-            
-        }
-      }
-    }
+  
            
             
             stage('Upload Artifact') {
