@@ -18,51 +18,7 @@ pipeline {
                  }
              }
          
-           }
-             stage('compile') {
-      steps {
-             echo "Compiling"
-                bat 'mvn compile'
-      }
-        }
-            stage('test') {
-      steps {
-        echo "test"
-        bat 'mvn test'
-      }
-    }
-              stage('Sonar Analysis') {
-            steps {
-                // use the SonarQube Scanner to analyze the project
-                withSonarQubeEnv('SonarQubeServer') {
-                    bat 'mvn sonar:sonar'
-                }
-            }
-        }
-            
-            stage('Publishing Junit report') {
-                steps {
-                    junit 'target/surefire-reports/**/*.xml'
-                }
-            }
-  
-           
-            
-            stage('Upload Artifact') {
-                 steps {
-                  script{
-                      def server = Artifactory.server 'artifactory'
-                      def uploadSpec = """{ 
-                          "files":[
-                              {
-                                  "pattern":"target./*.jar",
-                                  "target": "multibranchCiCdvaidehi/"
-                              }
-                              ]
-                              }"""
-                              server.upload(uploadSpec)
-                              }
-                              }
+          
                               }
             }             
 
