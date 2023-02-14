@@ -40,9 +40,7 @@ pipeline {
       steps {
         echo "Performing Sonar Analysis"
         withSonarQubeEnv('SonarQubeServer'){
-        bat  ' mvn -Dsonar.coverage.jacoco.xmlReportPaths=
-      .../target/site/jacoco-aggregate/jacoco.xml
-    sonar:sonar -Pcoverage'
+        bat  'mvn sonar:sonar'
            
             
         }
