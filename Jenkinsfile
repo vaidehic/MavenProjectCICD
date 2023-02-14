@@ -31,6 +31,15 @@ pipeline {
         bat 'mvn test'
       }
     }
+              stage('Sonar Analysis') {
+            steps {
+                // use the SonarQube Scanner to analyze the project
+                withSonarQubeEnv('SonarQubeServer') {
+                    bat 'mvn sonar:sonar'
+                }
+            }
+        }
+            
             stage('Publishing Junit report') {
                 steps {
                     junit 'target/surefire-reports/**/*.xml'
