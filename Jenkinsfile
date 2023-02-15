@@ -26,14 +26,14 @@ pipeline {
             }
         }
              
-             
+        }
           
              post {
                  always {
                      jiraSendBuildInfo site:'vaidehijirasite.atlassian.net', branch:'master'
                     
                  }
-             }
+             
          
           
                               
