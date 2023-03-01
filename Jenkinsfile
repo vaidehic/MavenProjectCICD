@@ -40,8 +40,7 @@ def server = Artifactory.server 'artifactory'
 server.upload(uploadSpec)
 }
 }
-}
-} 
+
              
         }
           
