@@ -45,15 +45,7 @@ server.upload(uploadSpec)
              
         }
           
-             post {
-                 always {
-                     jiraSendBuildInfo site:'vaidehijirasite.atlassian.net', branch:'master'
-                    
-                 }
-             
-         
-          
-                              
+                          
             }             
         
     }   
