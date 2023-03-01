@@ -23,6 +23,6 @@ pipeline{
            jiraSendBuildInfo site: 'vaidehijirasite.atlassian.net', branch:'MPC-1-develop'
         }
      }
-  }
+  
 }
 }
