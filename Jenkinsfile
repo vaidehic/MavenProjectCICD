@@ -17,12 +17,12 @@ pipeline{
         bat 'mvn test'
       }
     }
-     
+   }
      post {
         always {
            jiraSendBuildInfo site: 'vaidehijirasite.atlassian.net', branch:'MPC-1-develop'
         }
      }
-  
-}
+ 
+
 }
