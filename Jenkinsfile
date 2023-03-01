@@ -17,11 +17,7 @@ pipeline{
         bat 'mvn test'
       }
     }
-      stage ('build') {
-         steps {
-            echo "building"
-         }
-      
+     
      post {
         always {
            jiraSendBuildInfo site: 'vaidehijirasite.atlassian.net', branch:'MPC-1-develop'
